@@ -3,30 +3,42 @@ import java.util.ArrayList;
 
 public class Grid{
 
-  int row = 0, column = 0;
-  String[][] grid = new String[row][column];
+  private int row = 0;
+  private int column = 0;
+  DotCluster[][] contents = new DotCluster[row][column];
 
   public Grid(){
-    System.out.println(grid);
+    contents = new DotCluster[row][column];
   }
 
   public Grid (int rowsInput, int columnInput){
-    grid = new String[rowsInput][columnInput];
-    for (row = 0; row < grid.length; row++){
-      for (column = 0; column < grid[row].length; column++){
-          grid[row][column] = ".    ";
+    this();
+    //Grid output = new Grid();
+    row = rowsInput;
+    column = columnInput;
+    contents = new DotCluster[rowsInput][columnInput];
+    for (int i = 0; i < row; i++){
+      for (int j = 0; j < column; j++){
+          contents[i][j] = new DotCluster(1, 32);
       }
-    } System.out.println(grid);
+    }
   }
 
   public String toString(){
-    return this.grid;
+    String output = "";
+    for (DotCluster[] row: contents){
+      for (DotCluster i : row){
+        output += i.toString() + " ";
+      }
+      output += "\n";
+    }
+    return output;
   }
 
   public static void main(String[] args){
-    Grid bob = new Grid();
+    // Grid bob = new Grid();
     Grid richard = new Grid(3, 3);
-    System.out.println(bob);
+    // System.out.println(bob);
     System.out.println(richard);
   }
 
