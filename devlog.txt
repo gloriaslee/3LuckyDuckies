@@ -4,8 +4,9 @@ Gloria Lee
 Nora Miller
 pd 8
 ---------------------
-<Project Summary / Working Title>
+Chain Reaction
 
+<Working summary>
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 devlog--
@@ -56,9 +57,9 @@ tales of wisdom gained...
 ==============================================================
 
 
-yyyy-mm-dd
+2022-01-16
 --------------------------------------------------------------
-<Member> :: <Thing member did.>
+Ziying Jian :: <Thing member did.>
 <Member> :: <Thing member did.>
 <Member> :: <Thing member did.>
 ==============================================================
