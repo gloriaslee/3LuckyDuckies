@@ -1,8 +1,6 @@
-<<<<<<< HEAD
+
 public class DotCluster{ // stores information about each DotCluster
-=======
-public class DotCluster{ // stores information about each DotCluster
->>>>>>> 392792f3f0f43ec16009aa781a4885544f9d3f10
+
   public int color;
   private int numDots, maxDot; // make it final later
 
