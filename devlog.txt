@@ -28,6 +28,9 @@ Use keyboard shortcut to jump to end,
  Qs:
  - How does the thing with the colors work? like, how can setting a variable with the name GREEN or RED to a specific value
    create the specified color? Is the variable name special, or the value, or the combination of the two?
+ - Is there a way to take the user's cursor position as input so we can streamline
+    the addDot method?
+
 
  2022-01-16 - 4 hours
  - Finished UML diagram for the game apparatus itself (not the AI part)
