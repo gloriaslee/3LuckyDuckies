@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-=======
-
-
 import java.util.ArrayList;
 
->>>>>>> e32d37e9f2f432d109be8783cface7740bb4965e
 public class Grid{
 
   public int rows = 0;
@@ -70,18 +65,6 @@ public class Grid{
       }
       output += "\n";
   } return output;
-}
-
-  public static void main(String[] args){
-    Grid richard = new Grid(12, 18);
-    System.out.println(richard);
-<<<<<<< HEAD
   }
 
 }
-=======
-  }
-
-}
-
->>>>>>> e32d37e9f2f432d109be8783cface7740bb4965e
