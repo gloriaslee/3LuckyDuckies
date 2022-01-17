@@ -1,10 +1,7 @@
-<<<<<<< HEAD
+
 public class DotCluster{ // stores information about each DotCluster
-=======
-public class DotCluster{ // stores information about each DotCluster
->>>>>>> 392792f3f0f43ec16009aa781a4885544f9d3f10
   public int color;
-  private int numDots, maxDot; // make it final later
+  public int numDots, maxDot; // make it final later
 
   // the following are all the things we will need to refer back to for all instances of DotCluster
 
@@ -16,8 +13,7 @@ public class DotCluster{ // stores information about each DotCluster
   private static final int CYAN = 36;
   private static final int WHITE = 37;
   public static final int RESET = 0;
-  //private static String[] repSet = {"•", "°", "·", "º", "ø", "0", "O", "o"} // the set of characters used to represent 1, 2, 3, and 4 dots in a cluster
-  private static String[] repSet = {" ", "·", "o", "O", "ø"} ;// represents the dotCluster in a way the user can seee
+  public static String[] repSet = {" ", "·", "o", "O", "ø"} ;// represents the dotCluster in a way the user can seee
                                                               // in order: 0 dots - (just a space), 1 - ·, 2 - o, 3 - O, 4 - ø
   public DotCluster(){
     numDots = 0;
@@ -36,6 +32,7 @@ public class DotCluster{ // stores information about each DotCluster
     String output = "";
     output += colorText(color);
     output += repSet[numDots];
+    output += colorText(RESET); // so that the color specified only affects the
     return output;
   }
 
