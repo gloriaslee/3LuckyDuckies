@@ -4,15 +4,39 @@ Gloria Lee
 Nora Miller
 pd 8
 ---------------------
-Chain Reaction
+<Chain Reaction>
 
-<Working summary>
+Our trio’s proposal is to create a Chain Reaction game in terminal - a grid based game in which each box of the grid contains a maximum of 2, 3, or 4 dots.
+Corner boxes contain at most 2 dots; edge boxes at most 3; middle boxes at most 4. When this maximum is reached, the box ‘explodes’ - each dot contained in the box is sent to one neighboring box.
+
+Since this is a 2 (or more)-player game, the objective is to eliminate all of the other player’s dots.
+Each player’s dots have a color unique to them (red or green etc.).
+All boxes can contain the dots of only one player, and when one of your boxes explodes into a box containing dots of the other player, the other player’s dots become yours.
+Once the board only has dots of your color, you’ve won.
+Since explosions in one box can often lead to chain reactions of explosions in other boxes, hence the name Chain Reaction.
+
+Essentially, we’re trying to create a version of the game that can be run in the terminal.
+https://play.google.com/store/apps/details?id=com.BuddyMattEnt.ChainReaction&hl=en_US&gl=US
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 devlog--
 Use keyboard shortcut to jump to end,
  replicate entry template,
  modify appropriately.
+
+
+ Qs:
+ - How does the thing with the colors work? like, how can setting a variable with the name GREEN or RED to a specific value
+   create the specified color? Is the variable name special, or the value, or the combination of the two?
+
+1-16, morning
+- Finished UML diagram for the game apparatus itself (not the AI part)
+- started the non-dynamic parts of the game apparatus
+
+
+
+
+
 
 zone of reflection--
 Flesh out each category whenever necessary, appropriate.
@@ -47,20 +71,19 @@ tales of wisdom gained...
 
 
 
- ______   ______   __   __   __       ______   _______     
-/_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\    
-\:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__  
- \:\ \ \ \\:\/___/\\:\ \\ \ \\:\ \    \:\ \ \ \\:\ /____/\ 
-  \:\ \ \ \\::___\/_\:\_/.:\ \\:\ \____\:\ \ \ \\:\\_  _\/ 
-   \:\/.:| |\:\____/\\ ..::/ / \:\/___/\\:\_\ \ \\:\_\ \ \ 
-    \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/ 
+ ______   ______   __   __   __       ______   _______
+/_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\
+\:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__
+ \:\ \ \ \\:\/___/\\:\ \\ \ \\:\ \    \:\ \ \ \\:\ /____/\
+  \:\ \ \ \\::___\/_\:\_/.:\ \\:\ \____\:\ \ \ \\:\\_  _\/
+   \:\/.:| |\:\____/\\ ..::/ / \:\/___/\\:\_\ \ \\:\_\ \ \
+    \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/
 ==============================================================
 
 
-2022-01-16
+yyyy-mm-dd
 --------------------------------------------------------------
-Ziying Jian :: <Thing member did.>
+<Member> :: <Thing member did.>
 <Member> :: <Thing member did.>
 <Member> :: <Thing member did.>
 ==============================================================
-
