@@ -1,6 +1,15 @@
 import java.util.ArrayList;
 
 public class Grid{
+  private static final int RED = 31;
+  private static final int GREEN = 32;
+  private static final int YELLOW = 33;
+  private static final int BLUE = 34;
+  private static final int MAGENTA = 35;
+  private static final int CYAN = 36;
+  private static final int WHITE = 37;
+  public static final int RESET = 0;
+
 
   public int rows = 0;
   public int columns = 0;
@@ -38,6 +47,31 @@ public class Grid{
     // just add one to that dotCluster
     contents[x][y].numDots = contents[x][y].numDots + 1;
     contents[x][y].color = colorIn;
+    if(contents[x][y].numDots==contents[x][y].maxDot){
+      explode(colorIn, x,y);
+    }
+  }
+
+  public void explode(int colorIn, int x, int y){
+    contents[x][y].numDots = 0;
+    contents[x][y].color = BLUE;
+
+    if(x-1>-1){  //if box directly above exists
+      addDot(colorIn, x-1, y);
+    }
+    if(x+1<rows){ //if box directly below exists
+      addDot(colorIn, x+1, y);
+    }
+    if(y-1>-1){ //if box to the left exists
+      addDot(colorIn, x, y-1);
+    }
+    if(y+1<columns){ //if box to the right exists
+      addDot(colorIn, x, y+1);
+    }
+
+
+
+
   }
 
   // public String toString(){
