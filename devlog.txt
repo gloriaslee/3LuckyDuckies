@@ -28,12 +28,22 @@ Use keyboard shortcut to jump to end,
  Qs:
  - How does the thing with the colors work? like, how can setting a variable with the name GREEN or RED to a specific value
    create the specified color? Is the variable name special, or the value, or the combination of the two?
-
-1-16, morning
-- Finished UML diagram for the game apparatus itself (not the AI part)
-- started the non-dynamic parts of the game apparatus
+ - Is there a way to take the user's cursor position as input so we can streamline
+    the addDot method?
 
 
+ 2022-01-16 - 4 hours
+ - Finished UML diagram for the game apparatus itself (not the AI part)
+ - created plan for incremental development
+ - started the non-dynamic parts of the game apparatus (Grid, DotCluster classes)
+
+ 2022-01-17 - 3 hours
+ - Started Woo.java
+ - creation of a checkWin and turn methods.
+ - modified grid toString so that row numbers and column numbers are printed along with
+ the grid itself.
+ - created addDot method to add dot into specified grid position while checking
+    if the dot's input position violates any game rules.
 
 
 
