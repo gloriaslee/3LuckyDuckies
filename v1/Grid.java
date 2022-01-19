@@ -83,11 +83,15 @@ public class Grid{
     if(y+1<columns){ //if box to the right exists
       addDot(colorIn, x, y+1);
     }
+  }
 
-
-
+  public void explodeQueue() {
+    // 1. explodes the initial thing
+    // 2. makes a list of the explosion that
+    // makes a list of explosions that are necessitated by
 
   }
+
 
   // public String toString(){
   //   String output = "";
