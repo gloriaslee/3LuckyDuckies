@@ -13,32 +13,47 @@ public class Grid{
 
   public int rows = 0;
   public int columns = 0;
-  DotCluster[][] contents = new DotCluster[rows][columns];
+  DotCluster[][] contents = new DotCluster[rows][columns]; // is the second half of this statement necessary?
 
   public Grid(){
     contents = new DotCluster[rows][columns];
   }
 
   public Grid (int rowsInput, int columnInput){
-    this();
+
     //Grid output = new Grid();
+    this();
     rows = rowsInput;
     columns = columnInput;
-    contents = new DotCluster[rowsInput][columnInput];
+    contents = new DotCluster[rows][columns];
+
+    // contents = new DotCluster[rows][columns];
     for (int i = 0; i < rows; i++){
       for (int j = 0; j < columns; j++){
           contents[i][j] = new DotCluster(0, 34);
+          //contents[i][j].maxDot = 4;
           //changing maxDot for special DotClusters:
           if(i==0||i==rows-1){
             if(j==0||j==columns-1){
               contents[i][j].maxDot=2;
             }
-          }else if(i==0||i==rows-1||j==0||j==columns-1){
+          }else if( i==0||i==rows){
+            System.out.println(contents[i][j].color);
             contents[i][j].maxDot = 3;
+            System.out.println(contents[i][j].maxDot);
+          }else if( j==0||j==columns-1 ){
+
+            contents[i][j].maxDot = 3;
+            System.out.println(contents[i][j].maxDot);
           }else{
             contents[i][j].maxDot = 4;
           }
+
       }
+    }
+    for (int j = 1; j < columns - 1; j++ ){ // not quite the cleanest, but works for now
+        contents[0][j].maxDot = 3;
+        contents[rows-1][j].maxDot = 3;
     }
   }
 
@@ -100,5 +115,19 @@ public class Grid{
       output += "\n";
   } return output;
   }
+
+  public String maxDotChecker(){
+  String output = "";
+    // numbers at the top
+   for (int j = 0; j < rows; j++){
+     for (int i = 0; i < columns; i++){
+       output += contents[j][i].maxDot + " ";
+     }
+     output += "\n";
+    } return output;
+
+  }
+
+
 
 }

@@ -30,6 +30,9 @@ Use keyboard shortcut to jump to end,
    create the specified color? Is the variable name special, or the value, or the combination of the two?
  - Is there a way to take the user's cursor position as input so we can streamline
     the addDot method?
+ - Instead of reprinting the new grid with each turn, how can we refresh and erase previous output so it looks like the grid is
+    updating with each turn?
+  - Why do we have an error specifically with 2x3 grids? Is it a bug in the code with how rows/cols are treated?
 
 
  2022-01-16 - 4 hours
@@ -45,7 +48,16 @@ Use keyboard shortcut to jump to end,
  - created addDot method to add dot into specified grid position while checking
     if the dot's input position violates any game rules.
 
-
+ 2022-01-18 - In class 0.5 hours and 1.5 hours after school
+ - Created explode method for when a box reaches the maximum number of dots.
+ - The explode method explodes only into neighboring boxes that exist by using if statements to check for this.
+ - The explode method invokes the addDot method, which checks for explode conditions, which means we also have
+  functional chain reaction explosion output.
+ - Tweaked checkWin for unintended wins (for example, after the first player's move)
+ - separated runGame() and turn() methods for less complicated code
+ - Found 2 sizable errors:
+    - maxDot isn't set to 3 on horizontal edges (patched)
+    - There needs to be some sort of queue in the case that two explosions occur at the same time and affect the same dotCluster
 
 
 zone of reflection--
