@@ -9,7 +9,7 @@ public class Grid{
   private static final int CYAN = 36;
   private static final int WHITE = 37;
   public static final int RESET = 0;
-  ArrayList queue = new ArrayList(<int[]>);
+  ArrayList<int[]> queue = new ArrayList<int[]>();
 
 
   public int rows = 0;
@@ -63,26 +63,33 @@ public class Grid{
     // just add one to that dotCluster
     contents[x][y].numDots = contents[x][y].numDots + 1;
     contents[x][y].color = colorIn;
-    checkExplode();
+    checkExplode(colorIn, x, y);
     }
-  }
+
 
   public void checkExplode(int colorIn, int x, int y){
-	if (contents[x][y].numDots==contents[x][y].maxDot){
-   if (contents[x-1][y].numDots==contents[x-1][y].maxDot){
-      queue.add({x-1, y});
-		}
-     if (contents[x][y-1].numDots==contents[x][y-1].maxDot){
-       queue.add({x, y-1});
-     }
-      if (contents[x][y+1].numDots==contents[x][y+1].maxDot){
-        queue.add({x, y+1});
-      }
+	   if (contents[x][y].numDots==contents[x][y].maxDot){
+       int[] coords = {0, 0};
+       if (contents[x-1][y].numDots==contents[x-1][y].maxDot){
+         coords[0] = x-1;
+         coords[1] = y;
+         //coords = { x-1, y };
+         queue.add(coords);
+		    }
       if (contents[x+1][y].numDots==contents[x+1][y].maxDot){
-        queue.add({x+1, y});
+        coords[0] = x+1;
+        queue.add(coords);
       }
-
-	   }
+       if (contents[x][y-1].numDots==contents[x][y-1].maxDot){
+         coords[0] = x;
+         coords[1] = y-1;
+         queue.add(coords);
+       }
+      if (contents[x][y+1].numDots==contents[x][y+1].maxDot){
+        coords[1] = y+1;
+        queue.add(coords);
+      }
+    }
   }
 
   public void explode(int colorIn, int x, int y){
@@ -104,24 +111,13 @@ public class Grid{
   }
 
   public void explodeQueue(int colorIn) {
-    for (int m = 0; m < queue.size(); m+2){
-      explode(int colorIn, int m, int m+1); // reminder: all the explosions will be the same color, so we don't need to specify the explosion for each
+    for (int m = 0; m < queue.size(); m++){
+      int[] coords = queue.get(m);
+      explode(colorIn, coords[0], coords[1]); // reminder: all the explosions will be the same color, so we don't need to specify the explosion for each
       queue.remove(m);
-      queue.remove(m+1);
+      //queue.remove(m+1);
     }
   }
-
-
-  // public String toString(){
-  //   String output = "";
-  //   for (DotCluster[] row: contents){
-  //     for (DotCluster i : row){
-  //       output += i.toString() + " ";
-  //     }
-  //     output += "\n";
-  //   }
-  //   return output;
-  // }
 
   public String toString(){
     String output = "  ";
