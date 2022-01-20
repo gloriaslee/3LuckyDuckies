@@ -6,19 +6,6 @@ pd 8
 ---------------------
 <Chain Reaction>
 
-Our trio’s proposal is to create a Chain Reaction game in terminal - a grid based game in which each box of the grid contains a maximum of 2, 3, or 4 dots.
-Corner boxes contain at most 2 dots; edge boxes at most 3; middle boxes at most 4. When this maximum is reached, the box ‘explodes’ - each dot contained in the box is sent to one neighboring box.
-
-Since this is a 2 (or more)-player game, the objective is to eliminate all of the other player’s dots.
-Each player’s dots have a color unique to them (red or green etc.).
-All boxes can contain the dots of only one player, and when one of your boxes explodes into a box containing dots of the other player, the other player’s dots become yours.
-Once the board only has dots of your color, you’ve won.
-Since explosions in one box can often lead to chain reactions of explosions in other boxes, hence the name Chain Reaction.
-
-Essentially, we’re trying to create a version of the game that can be run in the terminal.
-https://play.google.com/store/apps/details?id=com.BuddyMattEnt.ChainReaction&hl=en_US&gl=US
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 devlog--
 Use keyboard shortcut to jump to end,
  replicate entry template,
@@ -34,30 +21,6 @@ Use keyboard shortcut to jump to end,
     updating with each turn?
   - Why do we have an error specifically with 2x3 grids? Is it a bug in the code with how rows/cols are treated?
 
-
- 2022-01-16 - 4 hours
- - Finished UML diagram for the game apparatus itself (not the AI part)
- - created plan for incremental development
- - started the non-dynamic parts of the game apparatus (Grid, DotCluster classes)
-
- 2022-01-17 - 3 hours
- - Started Woo.java
- - creation of a checkWin and turn methods.
- - modified grid toString so that row numbers and column numbers are printed along with
- the grid itself.
- - created addDot method to add dot into specified grid position while checking
-    if the dot's input position violates any game rules.
-
- 2022-01-18 - In class 0.5 hours and 1.5 hours after school
- - Created explode method for when a box reaches the maximum number of dots.
- - The explode method explodes only into neighboring boxes that exist by using if statements to check for this.
- - The explode method invokes the addDot method, which checks for explode conditions, which means we also have
-  functional chain reaction explosion output.
- - Tweaked checkWin for unintended wins (for example, after the first player's move)
- - separated runGame() and turn() methods for less complicated code
- - Found 2 sizable errors:
-    - maxDot isn't set to 3 on horizontal edges (patched)
-    - There needs to be some sort of queue in the case that two explosions occur at the same time and affect the same dotCluster
 
 
 zone of reflection--
@@ -102,6 +65,46 @@ tales of wisdom gained...
     \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/
 ==============================================================
 
+
+ 2022-01-16 - 4 hours
+ As a team:
+ - Finished UML diagram for the game apparatus itself (not the AI part)
+ - created plan for incremental development
+ - started the non-dynamic parts of the game apparatus (Grid, DotCluster classes)
+
+ 2022-01-17 - 3 hours
+ As a temam:
+ - Started Woo.java
+ - creation of a checkWin and turn methods.
+ - modified grid toString so that row numbers and column numbers are printed along with
+ the grid itself.
+ - created addDot method to add dot into specified grid position while checking
+    if the dot's input position violates any game rules.
+
+ 2022-01-18 - In class 0.5 hours and 1.5 hours after school
+ As a team:
+ - Created explode method for when a box reaches the maximum number of dots.
+ - The explode method explodes only into neighboring boxes that exist by using if statements to check for this.
+ - The explode method invokes the addDot method, which checks for explode conditions, which means we also have
+  functional chain reaction explosion output.
+ - Tweaked checkWin for unintended wins (for example, after the first player's move)
+ - separated runGame() and turn() methods for less complicated code
+ - Found 2 sizable errors:
+    - maxDot isn't set to 3 on horizontal edges (patched)
+    - There needs to be some sort of queue in the case that two explosions occur at the same time and affect the same dotCluster
+    
+  2022-01-19 - In class 0.5 hours and 2 hours after school
+  Nora: Set up basic groundwork/functionality for the explodeQueue
+  Ziying: Set up basic groundwork for method to force the user to wait()
+  Gloria: Set up basic groundwork for code to reset screen after each turn
+  As a team:
+  - to address the issue of multiple explodes simultaneously affecting the same box, we set up an explodeQueue
+  - explodeQueue queues explodes to execute one by one using an array list of integer arrays representing coordinates.
+  - explode() no longer invokes addDot, but instead just adds 1 more to the numDot of surrounding dot clusters to avoid simulatneous explosion issue
+  - fiddled around with wait timers and clearing screen after each turn
+  - Found more bugs:
+      - some issues, probably with color reset, that make some dotClusters unavailable to the player even though they should be available
+      
 
 yyyy-mm-dd
 --------------------------------------------------------------
