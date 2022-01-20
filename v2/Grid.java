@@ -61,13 +61,24 @@ public class Grid{
   public void addDot(int colorIn, int x, int y){
     // find the location of the dot that needs to be added
     // just add one to that dotCluster
-    contents[x][y].numDots = contents[x][y].numDots + 1;
+    contents[x][y].numDots = contents[x][y].numDots + 1; // adds dot
     contents[x][y].color = colorIn;
-    checkExplode(colorIn, x, y);
+    if (contents[x][y].numDots == contents[x][y].maxDot){
+      explode(colorIn, x, y); // should be either 0 or 1 explosions - no more
     }
+    //explode(); // should just be one explosion - of the dot
+    checkExplode(colorIn, x, y);
+    while (queue.size() >= 0){
+      explodeQueue(colorIn); // each invocation clears the queue, then invokes checkExplode, which invokes nothing else.
+                             // The body of the loop then ends, and is performed again until the queue is empty.
+    }
+
+  }
 
 
   public void checkExplode(int colorIn, int x, int y){
+    // checks if, after an explosion has occurred, more are necessary, and adds
+    // these to the queue, but doesn't do them
 	   if (contents[x][y].numDots==contents[x][y].maxDot){
        int[] coords = {0, 0};
        if (contents[x-1][y].numDots==contents[x-1][y].maxDot){
@@ -92,21 +103,25 @@ public class Grid{
     }
   }
 
-  public void explode(int colorIn, int x, int y){
+  public void explode(int colorIn, int x, int y){ // not invoking addDot -> only one explosion occurs per invocation
     contents[x][y].numDots = 0;
     contents[x][y].color = BLUE;
 
     if(x-1>-1){  //if box directly above exists
-      addDot(colorIn, x-1, y);
+      contents[x-1][y].numDots += 1;
+      //addDot(colorIn, x-1, y);
     }
     if(x+1<rows){ //if box directly below exists
-      addDot(colorIn, x+1, y);
+      contents[x+1][y].numDots += 1;
+      //addDot(colorIn, x+1, y);
     }
     if(y-1>-1){ //if box to the left exists
-      addDot(colorIn, x, y-1);
+      contents[x][y-1].numDots += 1;
+      //addDot(colorIn, x, y-1);
     }
     if(y+1<columns){ //if box to the right exists
-      addDot(colorIn, x, y+1);
+      contents[x][y+1].numDots += 1;
+      //addDot(colorIn, x, y+1);
     }
   }
 
@@ -114,7 +129,9 @@ public class Grid{
     for (int m = 0; m < queue.size(); m++){
       int[] coords = queue.get(m);
       explode(colorIn, coords[0], coords[1]); // reminder: all the explosions will be the same color, so we don't need to specify the explosion for each
+                                              // should be exactly one explosion
       queue.remove(m);
+      checkExplode(colorIn, coords[0], coords[1]);
       //queue.remove(m+1);
     }
   }

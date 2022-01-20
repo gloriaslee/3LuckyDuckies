@@ -45,8 +45,6 @@ public void checkWin(){ // resets win to the correct value (whether someone's wo
   public void turn(){
     // will be used to alternate between player turns
     // take input on dot location
-    //checkWin();
-
     int rowInput;
     int colInput;
     int currentColor;
@@ -59,11 +57,12 @@ public void checkWin(){ // resets win to the correct value (whether someone's wo
         System.out.println("First input desired row, then desired column");
         rowInput = redPlayer.nextInt();
         colInput = redPlayer.nextInt();
-        while(rowInput<0 || rowInput>gameBoard.rows)
+        //while(rowInput<0 || rowInput>gameBoard.rows){
         while (gameBoard.contents[rowInput][colInput].color != currentColor && gameBoard.contents[rowInput][colInput].color != BLUE){
           System.out.println("Try again. You put a dot somewhere your opponent has already claimed." + "\n");
           turn();
         }
+      }
 
         redTurn = false;
 
