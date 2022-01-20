@@ -4,13 +4,7 @@ Gloria Lee
 Nora Miller
 pd 8
 ---------------------
-<Chain Reaction>
-
-devlog--
-Use keyboard shortcut to jump to end,
- replicate entry template,
- modify appropriately.
-
+Chain Reaction
 
  Qs:
  - How does the thing with the colors work? like, how can setting a variable with the name GREEN or RED to a specific value
@@ -20,7 +14,6 @@ Use keyboard shortcut to jump to end,
  - Instead of reprinting the new grid with each turn, how can we refresh and erase previous output so it looks like the grid is
     updating with each turn?
   - Why do we have an error specifically with 2x3 grids? Is it a bug in the code with how rows/cols are treated?
-
 
 
 zone of reflection--
@@ -34,7 +27,17 @@ Flesh out each category whenever necessary, appropriate.
 ------------------------------------------
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-wow we so BOSS bc...
+* Stack Overflow errors on a 3x3 grid 
+SOLVED BY: Added checkWin() to check after every explosion instead of until
+all the explosions has neded.
+LEARNED: Ignore the inner CS geek in you. After a trace, we discovered 
+that a 3x3 grid is too small and the reactions would keep going nonstop.
+Had we kept trying to tackle the issue head on without stopping to trace,
+we would not have completed the project.
+
+* Fixed the bug with 2x3 grids
+
+* Fixed a bug where you couldn't place a dot in a previously exploded spot
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -43,7 +46,7 @@ maybe some of these will move into the Obs.Ovrcm section...
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-wow! oo!...
+
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -67,12 +70,16 @@ tales of wisdom gained...
 
 
  2022-01-16 - 4 hours
+ --------------------------------------------------------------
  As a team:
  - Finished UML diagram for the game apparatus itself (not the AI part)
  - created plan for incremental development
  - started the non-dynamic parts of the game apparatus (Grid, DotCluster classes)
+ ==============================================================
+
 
  2022-01-17 - 3 hours
+ --------------------------------------------------------------
  As a temam:
  - Started Woo.java
  - creation of a checkWin and turn methods.
@@ -80,8 +87,11 @@ tales of wisdom gained...
  the grid itself.
  - created addDot method to add dot into specified grid position while checking
     if the dot's input position violates any game rules.
+==============================================================
 
- 2022-01-18 - In class 0.5 hours and 1.5 hours after school
+
+2022-01-18 - In class 0.5 hours and 1.5 hours after school
+--------------------------------------------------------------
  As a team:
  - Created explode method for when a box reaches the maximum number of dots.
  - The explode method explodes only into neighboring boxes that exist by using if statements to check for this.
@@ -92,8 +102,11 @@ tales of wisdom gained...
  - Found 2 sizable errors:
     - maxDot isn't set to 3 on horizontal edges (patched)
     - There needs to be some sort of queue in the case that two explosions occur at the same time and affect the same dotCluster
+==============================================================
+
     
-  2022-01-19 - In class 0.5 hours and 2 hours after school
+2022-01-19 - In class 0.5 hours and 2 hours after school
+--------------------------------------------------------------
   Nora: Set up basic groundwork/functionality for the explodeQueue
   Ziying: Set up basic groundwork for method to force the user to wait()
   Gloria: Set up basic groundwork for code to reset screen after each turn
@@ -104,7 +117,11 @@ tales of wisdom gained...
   - fiddled around with wait timers and clearing screen after each turn
   - Found more bugs:
       - some issues, probably with color reset, that make some dotClusters unavailable to the player even though they should be available
+==============================================================
       
+2022-01-20 - In class 0.5 hours and 3 hours after school
+--------------------------------------------------------------
+ Ziying: 
 
 yyyy-mm-dd
 --------------------------------------------------------------
