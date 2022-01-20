@@ -44,14 +44,14 @@ public void checkWin(){ // resets win to the correct value (whether someone's wo
 }
 
 //delay printing...
-private static void wait(int millis)
-{
-try {
-  Thread.sleep(millis);
-}
-catch (InterruptedException e) {
-}
-}
+    private static void wait(int millis)
+    {
+    try {
+      Thread.sleep(millis);
+    }
+    catch (InterruptedException e) {
+    }
+    }
 
   public void turn(){
     // will be used to alternate between player turns
@@ -74,7 +74,7 @@ catch (InterruptedException e) {
         while (gameBoard.contents[rowInput][colInput].color != currentColor && gameBoard.contents[rowInput][colInput].color != BLUE){
           // accounts for dots inserted in the wrong color and not inserted in blue
           System.out.println("Try again. You put a dot somewhere your opponent has already claimed." + "\n");
-          //wait(3000);
+          // wait(1000);
           turn();
         }
 
@@ -89,12 +89,12 @@ catch (InterruptedException e) {
         colInput = greenPlayer.nextInt();
         while (gameBoard.contents[rowInput][colInput].color != currentColor && gameBoard.contents[rowInput][colInput].color != BLUE ){
           System.out.println("Try again. You put a dot somewhere your opponent has already claimed." + "\n");
-          //wait(3000);
+          // wait(3000);
           turn();
         }
         redTurn = true;
       }
-      //wait(2000);
+      // wait(1000);
       System.out.println("You put in the following y coordinate: " + rowInput + " and the following x coordinate: " + colInput);
       gameBoard.addDot(currentColor, rowInput, colInput);
       checkWin();
@@ -107,7 +107,7 @@ catch (InterruptedException e) {
       turn();
     }
     System.out.println(gameBoard);
-    wait(2000);
+    // wait(2000);
   }
 
 
