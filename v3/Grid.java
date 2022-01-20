@@ -84,35 +84,35 @@ public class Grid{
 	  // if (contents[x][y].numDots==contents[x][y].maxDot){
     // int[] coords = {0, 0};
     if ( x - 1 >= 0 ){
-       if (contents[x-1][y].numDots==contents[x-1][y].maxDot){
+       if (contents[x-1][y].numDots>=contents[x-1][y].maxDot){
          int[] a = {x -1, y};
          queue.add(a);
 		    }
       }
     if ( x + 1 < rows ){
-        if (contents[x+1][y].numDots==contents[x+1][y].maxDot){
+        if (contents[x+1][y].numDots>=contents[x+1][y].maxDot){
           int[] b = {x+1, y};
           queue.add(b);
         }
       }
     if( y-1 > -1 ){
-       if (contents[x][y-1].numDots==contents[x][y-1].maxDot){
+       if (contents[x][y-1].numDots>=contents[x][y-1].maxDot){
          int[] c = {x, y-1};
          queue.add(c);
        }
      }
      if( y + 1 < columns ){
-      if (contents[x][y+1].numDots==contents[x][y+1].maxDot){
+      if (contents[x][y+1].numDots>=contents[x][y+1].maxDot){
         int[] d = {x, y+1};
         queue.add(d);
       }
     }
-    while (queue.size() > 0){
+
     //for (int i = 0; i < 1; i++){
-    explodeQueue(colorIn); // each invocation clears the queue, then invokes checkExplode, which invokes nothing else.
+   explodeQueue(colorIn); // each invocation clears the queue, then invokes checkExplode, which invokes nothing else.
                              // The body of the loop then ends, and is performed again until the queue is empty.
 
-  } // end method
+   // end method
 }
 
 
@@ -147,10 +147,13 @@ public class Grid{
 
     for (int m = 0; m < queue.size(); m++){
       int[] coords = queue.get(m);
+      System.out.println(coords[0]+" "+coords[1]);
       explode(colorIn, coords[0], coords[1]); // reminder: all the explosions will be the same color, so we don't need to specify the explosion for each
                                               // should be exactly one explosion
+                                              queue.remove(m);
+                                              System.out.println("Removed "+m);
       checkExplode(colorIn, coords[0], coords[1]);
-      queue.remove(m);
+
     }
   }
 
