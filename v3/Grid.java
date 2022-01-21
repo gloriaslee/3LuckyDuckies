@@ -14,6 +14,8 @@ public class Grid{
 
   public int rows = 0;
   public int columns = 0;
+  public String whoWon = "no one yet"; // both of these need to be accessable from Grid
+  public boolean win = false;
   DotCluster[][] contents = new DotCluster[rows][columns]; // is the second half of this statement necessary?
 
   public Grid(){
@@ -56,6 +58,29 @@ public class Grid{
         contents[0][j].maxDot = 3;
         contents[rows-1][j].maxDot = 3;
     }
+  }
+
+  public void checkWin(){ // resets win to the correct value (whether someone's won or not)
+    int redDots = 0;
+    int greenDots = 0;
+    for (int i = 0; i < rows; i++){
+      for (int j = 0; j < columns; j++){
+        // goes through the entire board and checks if all contents are one color
+        if (contents[i][j].color == RED){
+          redDots++;
+        } else if (contents[i][j].color == GREEN){
+          greenDots++;
+        }
+      }
+    }
+    if (redDots == 0 && greenDots > 1){
+      win = true;
+      whoWon = "GREEN";
+    } else if (greenDots == 0 && redDots > 1){
+      win = true;
+      whoWon = "RED";
+    }
+    System.out.println(whoWon+" won.");
   }
 
 
@@ -110,8 +135,7 @@ public class Grid{
         int[] d = {x, y+1};
         queue.add(d);
       }
-    }
-
+    }r
     //for (int i = 0; i < 1; i++){
    explodeQueue(colorIn); // each invocation clears the queue, then invokes checkExplode, which invokes nothing else.
                              // The body of the loop then ends, and is performed again until the queue is empty.
@@ -149,9 +173,12 @@ public class Grid{
       explode(colorIn, coords[0], coords[1]); // reminder: all the explosions will be the same color, so we don't need to specify the explosion for each
                                               // should be exactly one explosion
                                               //queue.remove(m);
-        queue.remove(0);
+      queue.remove(0);
       queue.size(); // updates the size each time
-      System.out.println("Removed ");
+      checkWin();
+      if(win==true){
+        break;
+      }
       checkExplode(colorIn, coords[0], coords[1]);
 
     }
