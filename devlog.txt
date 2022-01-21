@@ -60,7 +60,7 @@ we changed ___ to ___ bc...
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 tales of wisdom gained...
-||||||||||||||||||||||||||||||||||||||||||
+* The try-catch loop is used to catch errors that affect the type
 
 
 
