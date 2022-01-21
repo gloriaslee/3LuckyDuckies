@@ -11,11 +11,11 @@ public class Grid{
   public static final int RESET = 0;
   ArrayList<int[]> queue = new ArrayList<int[]>();
 
-  public Grid gameBoard = new Grid(3,3);
-
 
   public int rows = 0;
   public int columns = 0;
+  public String whoWon = "no one yet"; // both of these need to be accessable from Grid
+  public boolean win = false;
   DotCluster[][] contents = new DotCluster[rows][columns]; // is the second half of this statement necessary?
 
   public Grid(){
@@ -25,7 +25,7 @@ public class Grid{
   public Grid (int rowsInput, int columnInput){
 
     //Grid output = new Grid();
-
+    this();
     rows = rowsInput;
     columns = columnInput;
     contents = new DotCluster[rows][columns];
@@ -58,6 +58,29 @@ public class Grid{
         contents[0][j].maxDot = 3;
         contents[rows-1][j].maxDot = 3;
     }
+  }
+
+  public void checkWin(){ // resets win to the correct value (whether someone's won or not)
+    int redDots = 0;
+    int greenDots = 0;
+    for (int i = 0; i < rows; i++){
+      for (int j = 0; j < columns; j++){
+        // goes through the entire board and checks if all contents are one color
+        if (contents[i][j].color == RED){
+          redDots++;
+        } else if (contents[i][j].color == GREEN){
+          greenDots++;
+        }
+      }
+    }
+    if (redDots == 0 && greenDots > 1){
+      win = true;
+      whoWon = "GREEN";
+    } else if (greenDots == 0 && redDots > 1){
+      win = true;
+      whoWon = "RED";
+    }
+    System.out.println(whoWon+" won.");
   }
 
 
@@ -113,7 +136,6 @@ public class Grid{
         queue.add(d);
       }
     }
-
     //for (int i = 0; i < 1; i++){
    explodeQueue(colorIn); // each invocation clears the queue, then invokes checkExplode, which invokes nothing else.
                              // The body of the loop then ends, and is performed again until the queue is empty.
@@ -150,18 +172,12 @@ public class Grid{
       int[] coords = queue.get(0);
       explode(colorIn, coords[0], coords[1]); // reminder: all the explosions will be the same color, so we don't need to specify the explosion for each
                                               // should be exactly one explosion
-          System.out.println("Removed "+coords[0]+" "+coords[1]);                                      //queue.remove(m);
-        queue.remove(0);
+                                              //queue.remove(m);
+      queue.remove(0);
       queue.size(); // updates the size each time
-      Game gameGame = new Game();
-
-      System.out.println("Checking");
-      System.out.println("gameBoard: "+gameBoard);
-      boolean wincon = gameGame.checkWin();
-      if (wincon==true){
-        System.out.println(gameGame.whoWon+" won");
+      checkWin();
+      if(win==true){
         break;
-
       }
       checkExplode(colorIn, coords[0], coords[1]);
 
