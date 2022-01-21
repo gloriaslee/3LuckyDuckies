@@ -63,8 +63,10 @@ public class Game{
           turn();
         }
       }
-      while(rowInput <0 || rowInput>=rows || colInput <0 || colInput>=columns){ //for when index input will be out of bounds
+      while(rowInput <0 || rowInput>=gameBoard.rows || colInput <0 || colInput>=gameBoard.columns){ //for when index input will be out of bounds
         System.out.println("Try again. Index input out of bounds of grid size");
+        turn();
+        redTurn *= -1;
       }
       while (gameBoard.contents[rowInput][colInput].color != colorInt && gameBoard.contents[rowInput][colInput].color != BLUE){
             // accounts for dots inserted in the wrong color and not inserted in blue
