@@ -7,17 +7,10 @@ pd 8
 Chain Reaction
 
  Qs:
- - Instead of reprinting the new grid with each turn, how can we refresh and erase previous output so it looks like the grid is
-    updating with each turn?
  - Why do we have an error specifically with 2x3 grids? Is it a bug in the code with how rows/cols are treated?
- - How do try-catch loops work?
- - 
+ - How do try-catch loops work exactly?
+ - What is considered "clean code"? And how can we best and most efficiently clean up?
 
-
-zone of reflection--
-Flesh out each category whenever necessary, appropriate.
- Need not be fully filled in until end of project,
- but best done as you go along.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -30,9 +23,10 @@ OBSTACLES OVERCOME
 
 * Stack Overflow errors on a 3x3 grid 
 SOLVED BY: Added checkWin() to check after every explosion instead of until
-all the explosions has neded.
+all the explosions have ended.
 LEARNED: Take a breath to stop coding. After a trace, we discovered 
-that a 3x3 grid is too small and the reactions would keep going nonstop.
+that a 3x3 grid is too small and the reactions would kept going nonstop, no 
+matter what we had done.
 Had we kept trying to tackle the issue head on without stopping to trace,
 we would not have completed the project.
 
@@ -42,20 +36,23 @@ we would not have completed the project.
 
 * Array out of bounds
 
-* 
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-blah blah pesky bug...
-maybe some of these will move into the Obs.Ovrcm section...
+* Our code struggles with computing large number of chain reactions. 
+After the reactions, dots may be misplaced.
+
+* How to implement some kind of border frame our
+game?
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+* Discovered terminal colors  
+* Creating a grid
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-we changed ___ to ___ bc...
+
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
