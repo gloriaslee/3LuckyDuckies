@@ -1,4 +1,4 @@
-
+import java.util.*;
 
 public class DotCluster{ // stores information about each DotCluster
 

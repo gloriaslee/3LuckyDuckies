@@ -1,3 +1,5 @@
+import java.util.*;
+
 import java.util.ArrayList;
 
 public class Grid{
@@ -41,7 +43,7 @@ public class Grid{
               contents[i][j].maxDot=2;
             }
           }else if( i==0||i==rows-1){
-            
+
             contents[i][j].maxDot = 3;
 
           }else if( j==0||j==columns-1 ){
