@@ -3,14 +3,7 @@ import java.util.*;
 import java.util.ArrayList;
 
 public class Grid{
-  private static final int RED = 31;
-  private static final int GREEN = 32;
-  private static final int YELLOW = 33;
-  private static final int BLUE = 34;
-  private static final int MAGENTA = 35;
-  private static final int CYAN = 36;
-  private static final int WHITE = 37;
-  public static final int RESET = 0;
+
   ArrayList<int[]> queue = new ArrayList<int[]>();
 
 
@@ -68,9 +61,9 @@ public class Grid{
     for (int i = 0; i < rows; i++){
       for (int j = 0; j < columns; j++){
         // goes through the entire board and checks if all contents are one color
-        if (contents[i][j].color == RED){
+        if (contents[i][j].color == Text.RED){
           redDots++;
-        } else if (contents[i][j].color == GREEN){
+        } else if (contents[i][j].color == Text.GREEN){
           greenDots++;
         }
       }
@@ -149,7 +142,7 @@ public class Grid{
 
   public void explode(int colorIn, int x, int y){ // not invoking addDot -> only one explosion occurs per invocation
     contents[x][y].numDots = 0;
-    contents[x][y].color = BLUE;
+    contents[x][y].color = Text.BLUE;
 
     if(x-1>-1){  //if box directly above exists
       contents[x-1][y].numDots += 1;

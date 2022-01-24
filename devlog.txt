@@ -21,11 +21,11 @@ OBSTACLES OVERCOME
 
 * Catching exceptions in user input using a try-catch loop
 
-* Stack Overflow errors on a 3x3 grid 
+* Stack Overflow errors on a 3x3 grid
 SOLVED BY: Added checkWin() to check after every explosion instead of until
 all the explosions have ended.
-LEARNED: Take a breath to stop coding. After a trace, we discovered 
-that a 3x3 grid is too small and the reactions would kept going nonstop, no 
+LEARNED: Take a breath to stop coding. After a trace, we discovered
+that a 3x3 grid is too small and the reactions would kept going nonstop, no
 matter what we had done.
 Had we kept trying to tackle the issue head on without stopping to trace,
 we would not have completed the project.
@@ -39,7 +39,7 @@ we would not have completed the project.
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* Our code struggles with computing large number of chain reactions. 
+* Our code struggles with computing large number of chain reactions.
 After the reactions, dots may be misplaced.
 
 * How to implement some kind of border frame our
@@ -47,7 +47,7 @@ game?
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* Discovered terminal colors  
+* Discovered terminal colors
 * Creating a grid
 
 MID-DEVELOPMENT DESIGN CHANGES
@@ -106,13 +106,13 @@ tales of wisdom gained...
     - There needs to be some sort of queue in the case that two explosions occur at the same time and affect the same dotCluster
 ==============================================================
 
-    
+
 2022-01-19 - In class 0.5 hours and 2 hours after school
 --------------------------------------------------------------
   Nora :: Set up basic groundwork/functionality for the explodeQueue
   Ziying :: Set up basic groundwork for method to force the user to wait()
   Gloria :: Set up basic groundwork for code to reset screen after each turn
-  As a team ::
+  As a team :: v3 created
   - to address the issue of multiple explodes simultaneously affecting the same box, we set up an explodeQueue
   - explodeQueue queues explodes to execute one by one using an array list of integer arrays representing coordinates.
   - explode() no longer invokes addDot, but instead just adds 1 more to the numDot of surrounding dot clusters to avoid simulatneous explosion issue
@@ -120,16 +120,44 @@ tales of wisdom gained...
   - Found more bugs:
       - some issues, probably with color reset, that make some dotClusters unavailable to the player even though they should be available
 ==============================================================
-      
+
 2022-01-20 - In class 0.5 hours and 2 hours after school
 --------------------------------------------------------------
  Ziying & Nora :: Worked on compeleting the flow chart
  As a team:
  - Incorporated checkWin() successfully
+ - Tried to set up scanner loop to try catch errors for non Integer input
+  during each turn and take alternate input if necessary.
+  ==============================================================
 
-2022-01-21
---------------------------------------------------------------
-<Member> :: <Thing member did.>
-<Member> :: <Thing member did.>
-<Member> :: <Thing member did.>
-==============================================================
+
+  2022-01-21 - In class 0.5 hours
+  --------------------------------------------------------------
+  As a team: created v4
+  - Set up additional checks for coordinate input that would be out of bounds
+  for the current array size.
+  - Figured out how to make a scanner loop work with try catch statements,
+  looping whenever an error is caught.
+  ==============================================================
+
+  2022-01-22 - 1 hour
+  --------------------------------------------------------------
+  Gloria :: Created v5
+  Worked on fixing a bug with the Scanner loop. Figured output
+  how to user scanner.nextLine() in order to get past the error
+  that the try/catch statement would have caught.
+  - Worked on fixing a bug with the while/if statements that catch array out
+  of bounds error
+  ==============================================================
+
+  2022-01-23 - 2 hours
+  --------------------------------------------------------------
+  Gloria :: Continued working on scanner bug. Moved the checks for array out of bounds
+  and the check for dot color/box color into the while(true) loop for more effishient error check.
+
+  Gloria and Ziying :: User can now also input RESET to reset their inputted coordinates
+  if they want to take back their initial input.
+  Added screen clearing to the code. Now with each turn, screen is cleared to make output cleaner.
+  Used Text.java to make our code in Game.java and Grid.java cleaner.
+  Tried to figure out how to display a border in the terminal to distinguish each turn.
+  ==============================================================
