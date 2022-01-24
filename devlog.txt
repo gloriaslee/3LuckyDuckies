@@ -7,9 +7,10 @@ pd 8
 Chain Reaction
 
  Qs:
- - Why do we have an error specifically with 2x3 grids? Is it a bug in the code with how rows/cols are treated?
+ - What was the cause of the error setting maxDots for Grid boxes in the top and bottom rows?
  - How do try-catch loops work exactly?
  - What is considered "clean code"? And how can we best and most efficiently clean up?
+ - How is this being graded?
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -20,6 +21,10 @@ OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Catching exceptions in user input using a try-catch loop
+SOLVED BY: Used a while(true) loop around the try-catch loop, which the try part breaks out of 
+and the catch part does not. Had the catch part read new user input. 
+LEARNED: Be patient with try-catch loops - it may take very long to 
+do enough trial and error to fix them. 
 
 * Stack Overflow errors on a 3x3 grid
 SOLVED BY: Added checkWin() to check after every explosion instead of until
@@ -30,11 +35,21 @@ matter what we had done.
 Had we kept trying to tackle the issue head on without stopping to trace,
 we would not have completed the project.
 
-* Fixed the bug with 2x3 grids
+* Fixed the bug with setting up maxDots for grid boxes at the very top and very bottom
+SOLVED BY: Added a for loop in Grid(rows, columns) that does this explicitly
+LEARNED: Coding is sometimes a bit like medicine - you don't always need to 
+know the mechanism of what went wrong to fix it. Start by narrowing the length 
+of code where the error could have occurred until you're down to a few lines of code, and replace the 
+functionality of that area. 
 
 * Fixed a bug where you couldn't place a dot in a previously exploded spot
+SOLVED BY: Ensuring that colors are reset when the number of dots goes down to 0
 
-* Array out of bounds
+* (Several times) Array out of bounds
+SOLVED BY: Paying close attention to exactly what happened prior to the error - 
+what did we try to add at too high or low an index?
+LEARNED: To fix errors involving arrays of arrays, and ArrayLists of arrays
+much more quickly
 
 
 UNRESOLVED ISSUES
@@ -52,13 +67,21 @@ COOL STUFF LEARNED
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+* Addition of a queue for explosions (to deal with simultaneous explosions affecting the same dot)
+* Moved checkWin to Grid, not Game, in order to check whether the game should end after 
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 tales of wisdom gained...
-* The try-catch loop is used to catch errors that affect the type
-
+* While we normally think of the the try-catch loop as being for errors that would cause exceptions, another way of 
+  thinking about it (at least with regards to user input) is that these are often the user errors that affect the type 
+  of the input. 
+* Pay attention to which class particular methods need to be in, both in terms of access and in terms of what makes sense. 
+  If you find you're changing the access keywords in ways that don't make intutitve sense, there probably exists a cleaner 
+  way of fixing your access issue than you are currently pursuing. 
+* Beware of the perils of try-catch loops!
+* Some types of exceptions should strike much more terror in your heart than than others - IndexOutOfBounds exceptions are really
+  small potatoes compared to StackOverflow or ConcurrentModification exceptions
 
 
  ______   ______   __   __   __       ______   _______
@@ -71,10 +94,26 @@ tales of wisdom gained...
 ==============================================================
 
 
+2022-1-13 - In class 0.5 hours and 2 hours after school
+ --------------------------------------------------------------
+ As a team :: 
+ - Brainstormed final project ideas
+ - Wrote up project proposal for googform
+ Gloria :: Typed and submitted googform
+ ==============================================================
+
+
+2022-1-14 - 1.5 hours
+ --------------------------------------------------------------
+ Nora :: 
+ - Started UML diagrams for the game
+ ==============================================================
+
+
  2022-01-16 - 4 hours
  --------------------------------------------------------------
  As a team ::
- - Finished UML diagram for the game apparatus itself (not the AI part)
+ - Finished UML diagrams for the game apparatus itself (not the AI part), and a brief outline of what to do next
  - created plan for incremental development
  - started the non-dynamic parts of the game apparatus (Grid, DotCluster classes)
  ==============================================================
@@ -84,10 +123,10 @@ tales of wisdom gained...
  --------------------------------------------------------------
  As a team ::
  - Started Woo.java
- - creation of a checkWin and turn methods.
- - modified grid toString so that row numbers and column numbers are printed along with
+ - creation of checkWin() and turn() methods.
+ - modified Grid.toString() so that row numbers and column numbers are printed along with
  the grid itself.
- - created addDot method to add dot into specified grid position while checking
+ - created addDot() method to add dot into specified grid position while checking
     if the dot's input position violates any game rules.
 ==============================================================
 
@@ -107,9 +146,9 @@ tales of wisdom gained...
 ==============================================================
 
 
-2022-01-19 - In class 0.5 hours and 2 hours after school
+2022-01-19 - In class 0.5 hours and 4 hours after school
 --------------------------------------------------------------
-  Nora :: Set up basic groundwork/functionality for the explodeQueue
+  Nora :: Set up and compiled basic groundwork/functionality for the explodeQueue
   Ziying :: Set up basic groundwork for method to force the user to wait()
   Gloria :: Set up basic groundwork for code to reset screen after each turn
   As a team :: v3 created
@@ -117,8 +156,10 @@ tales of wisdom gained...
   - explodeQueue queues explodes to execute one by one using an array list of integer arrays representing coordinates.
   - explode() no longer invokes addDot, but instead just adds 1 more to the numDot of surrounding dot clusters to avoid simulatneous explosion issue
   - fiddled around with wait timers and clearing screen after each turn
-  - Found more bugs:
+  Ziying & Nora ::
+  - Played a round and found more bugs:
       - some issues, probably with color reset, that make some dotClusters unavailable to the player even though they should be available
+  Nora :: Drafted flowchart
 ==============================================================
 
 2022-01-20 - In class 0.5 hours and 2 hours after school
@@ -143,14 +184,14 @@ tales of wisdom gained...
   2022-01-22 - 1 hour
   --------------------------------------------------------------
   Gloria :: Created v5
-  Worked on fixing a bug with the Scanner loop. Figured output
+  Worked on fixing a bug with the Scanner loop. Figured out
   how to user scanner.nextLine() in order to get past the error
   that the try/catch statement would have caught.
   - Worked on fixing a bug with the while/if statements that catch array out
   of bounds error
   ==============================================================
 
-  2022-01-23 - 2 hours
+  2022-01-23 - 3 hours
   --------------------------------------------------------------
   Gloria :: Continued working on scanner bug. Moved the checks for array out of bounds
   and the check for dot color/box color into the while(true) loop for more effishient error check.
@@ -160,4 +201,6 @@ tales of wisdom gained...
   Added screen clearing to the code. Now with each turn, screen is cleared to make output cleaner.
   Used Text.java to make our code in Game.java and Grid.java cleaner.
   Tried to figure out how to display a border in the terminal to distinguish each turn.
+
+  Nora: Finalized devlog
   ==============================================================
